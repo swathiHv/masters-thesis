@@ -207,7 +207,11 @@ citecolor=black,
 
 \usepackage[titles]{tocloft}
 \setlength{\cftfignumwidth}{6.5em}
+<<<<<<< HEAD
 \setlength{\cfttabnumwidth}{5.5em}
+=======
+\setlength{\cfttabnumwidth}{5.2em}
+>>>>>>> refs/remotes/origin/master
 \setlength{\cftchapnumwidth}{6em}
 
 
@@ -270,7 +274,11 @@ Cells have built-in sensors that can react to certain cues, directly and indirec
 \centering
 \includegraphics[width=0.6\textwidth]{Flux_sensor}
 \caption[Glycolytic flux sensor]
+<<<<<<< HEAD
 {Glycolytic flux sensor from \cite{Kochanowski1130}\index{sampling_pseudo}}
+=======
+{Glycolytic flux sensor\index{sampling_pseudo}}
+>>>>>>> refs/remotes/origin/master
 \label{fig:flux}
 \end{figure}
 
@@ -319,7 +327,11 @@ Table \ref{tab:dials} lists all the dials and the respective BiGG IDs. For the p
 
 \vspace{0.25in}
 \begin{table}[!ht]
+<<<<<<< HEAD
 \caption[List of dials and their corresponding BiGG IDs]{List of dials and their BiGG IDs}
+=======
+\caption[List of sensors and their corresponding BiGG IDs]{List of sensors and their BiGG IDs}
+>>>>>>> refs/remotes/origin/master
 
 \vspace{-0.25in}
 \begin{center}
@@ -359,7 +371,11 @@ NH4 uptake options & GLUDy / GLUSy, GLUDy / GLNS\\
 \centering
 \includegraphics[width=0.4\textwidth]{dial_1}
 \caption[Pictographic representation of Dial]
+<<<<<<< HEAD
 {Pictographic representation of Dial from \cite{Chubukov2014}\index{sampling_pseudo}}
+=======
+{Pictographic representation of Dial\index{sampling_pseudo}}
+>>>>>>> refs/remotes/origin/master
 \label{fig:dial_1}
 \end{figure}
 
@@ -367,7 +383,11 @@ NH4 uptake options & GLUDy / GLUSy, GLUDy / GLNS\\
 \centering
 \includegraphics[width=0.4\textwidth]{dial_2}
 \caption[Pentose-phosphate vs glycolysis dial]
+<<<<<<< HEAD
 {Pentose-phosphate vs glycolysis dial \index{sampling_pseudo}}
+=======
+{Pentose-phosphate vs glycolysis dial\index{sampling_pseudo}}
+>>>>>>> refs/remotes/origin/master
 \label{fig:dial_2}
 \end{figure}
 
@@ -618,7 +638,11 @@ A seperate model was built for each dials.
 The line plots in figures \ref{fig:binned}, \ref{fig:o2ldhline}, \ref{fig:nadhline} and \ref{fig:o2pgiline}, it can be seen that there exist a liner correlation between each of the sensors and dials. Since a linear correlation exists, the statistical model best suited was liner regression. The results for linear regression are as shown in section \ref{sec:lr}
 
 \subsection{Extreme Gradient Boosted Trees}\label{sec:xgboost}
+<<<<<<< HEAD
 From section \ref{sec:lr}, it is seen that linear regression doesn't perform as well as one would expect. Although there exists a linear relationship between each of the sensors and the dials, a combination of all the sensors leads to non-linearity. Since linear regression tries to fit a straight line for the dataset at hand, it fails to capture this non-linearity. In order to learn this non-linearity, ensemble learning techniques were used.\\
+=======
+From section \ref{sec:lr}, it is seen that linear regression doesn't perform as well as one would expect. Although there exists a linear relationship between each of the sensors and the dials, a combination of all the sensors leads to non-linearity. Since linear regression tries to fit a straight line for the dataset at hand, it fails to capture this non-linearity. In order to learn this non-linearity, ensemble learning techniques were employed.\\
+>>>>>>> refs/remotes/origin/master
 Extreme Gradient Boosted Trees \string(XGBoost) \cite{Chen:2016:XST:2939672.2939785} is a class of gradient boosted tree algorithm that employs the tree ensemble model.\\
 The XGBoost library has in-built APIs to retrieve feature importance. Feature importance provides a score that indicates how useful or valuable each feature is in the construction of the boosted decision trees within the model. The more an attribute is used to make key decisions with decision trees, the higher its relative importance.\\
 This importance is calculated explicitly for each attribute in the dataset, allowing attributes to be ranked and compared to each other. Importance is calculated for a single decision tree by the amount that each attribute split point improves the performance measure, weighted by the number of observations the node is responsible for. The performance measure may be the purity (Gini index) used to select the split points or another more specific error function. The feature importances are then averaged across all of the the decision trees within the model.\\
@@ -1112,13 +1136,18 @@ Dial & MSE  & Pearson-r & Coefficient R\string^2 \\
 \end{figure}
 
 %\vspace{-0.25in}
+<<<<<<< HEAD
 \begin{figure}[h!] 
+=======
+\begin{figure}[h] 
+>>>>>>> refs/remotes/origin/master
 \centering
 \includegraphics[width=0.5\textwidth]{PTAr_ACALD_rfr_important_features}
 \caption[Random Forest feature importance plot for $(PTAr, ACALD)$ dial]
 {Random Forest feature importance plot for $(PTAr, ACALD)$ dial\index{Feature importance plot for $(PTAr, ACALD)$ dial}}
 \label{fig:PtarAcaldRfrImp}
 \end{figure}
+<<<<<<< HEAD
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1148,6 +1177,15 @@ Figure \ref{fig:PflPdhRfrImp} indicates that both oxygen and NADH are important 
 
 The research presented in this thesis provides a compelling argument that sensors contain enough information to predict the values of dials. Additional data is not required to model the metabolic activities of E.coli MG1566 strain.
 
+=======
+
+\textbf{biological significance of feature importance plots}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusion}
+\textbf{TODO: Ask Zak about biological significance of feature importance plots}\\
+Table \ref{tab:Results} presents a consolidation of results from all the statistical methods employed in this project. The average and standard deviation (stdev) values of MSE, Pearson-r and Coefficient $R\string^2$ are calculated for each method and are reported in table \ref{tab:Results}. From the table \ref{tab:Results}, it is evident that through statistical modeling, dial values can be predicted effectively using sensors. 
+>>>>>>> refs/remotes/origin/master
 \vspace{0.25in}
 \begin{table}[!ht]
 \caption[Combined Results from All Methods]{Combined Results from All Methods}
@@ -1180,12 +1218,16 @@ Random Forest Regressor &  5.6008e-06 & 4.9992e-06 & 0.999968 & 3.0702e-05 & 0.9
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Future Work}
+<<<<<<< HEAD
 One of the very first steps in the future is to expand the number of sampling conditions. In case of pentose phosphate vs glycolysis dial, there is a high PGI coupling in the dial. By expanding the number of conditions, this high coupling can be avoided and more interesting results can be uncovered.
 
 The next step would be to add more sensors and dials from the literature.
 
 The more relevant and application oriented next step would be to constrain the metabolic model using the predictive model described in this research. The predictive model would add further constraints to the metabolic model which at times predicts values which are not achievable by a live organism. The combination of pre-existing metabolic modeling and the predictive model as described in this research can be implemented as a single model using genetic algorithms.
 
+=======
+\textbf{TODO: Ask Zak about it}
+>>>>>>> refs/remotes/origin/master
 %% END MATTER
 %\printindex %% Uncomment to display the index
 % \nocite{}  %% Put any references that you want to include in the bib 

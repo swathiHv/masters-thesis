@@ -194,25 +194,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Packages added by Swathi Hoysala
 \usepackage{listings,xcolor}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+
 \hypersetup{
-frenchlinks=true,
-%colorlinks=true,
-linkcolor=black,
-filecolor=black,      
-urlcolor=blue,
-citecolor=black,
+    frenchlinks=true,
+    %colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=black,
 }
 \usepackage{siunitx}
 
 \usepackage[titles]{tocloft}
 \setlength{\cftfignumwidth}{6.5em}
-<<<<<<< HEAD
 \setlength{\cfttabnumwidth}{5.5em}
-=======
-\setlength{\cfttabnumwidth}{5.2em}
->>>>>>> refs/remotes/origin/master
 \setlength{\cftchapnumwidth}{6em}
+\usepackage{subcaption}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -243,27 +241,53 @@ citecolor=black,
 % Of course, if you prefer, you can just start with
 %   \chapter{My First Chapter Name}
 % and start typing away.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Introduction}
-Cell's survival is dependent on regulation of metabolic operation.
-The regulation of microbial metabolic operation is tightly controlled by multiple layers \cite{Kotte2010} as shown in figure \ref{fig:mlayers}. 
+Cell's survival is dependent on regulation of metabolic operation. Cellular metabolism comprises of 
+\begin{itemize}
+    \item catabolic pathways which produce energy by breaking down molecules
+    \item anabolic reaction routes, which synthesizes the molecules required by the cell by providing the essential building blocks 
+\end{itemize}
+These catabolic pathways and anabolic reaction routes enable homeostasis and growth of the cells \cite{C3MB25489E}
+
+A cell needs to control and adapt its enzyme production and behaviour depending on its requirements. The regulation of microbial metabolic operation is tightly controlled by multiple layers \cite{Kotte2010} as shown in figure \ref{fig:mlayers}. \\
+Transcriptional, translational, allosteric, and post-translational regulations ensure that a microbe can respond to \textbf{diverse extracellular cues} through global and local circuits \cite{Chubukov2014}. This is done via signal transduction mechanisms that are closely related to regulatory mechanisms through signalling cascades. The process of transcription and translation are clearly interconnected as illustrated in figure \ref{fig:reg_net} but have usually been studied separately in distinct sub-disciplines
+of cellular biology.
+
 \begin{figure}[h] 
 \centering
 \includegraphics[width=0.4\textwidth]{metabolic_reg}
 \caption[Different layers that control the regulation of microbial metabolic operations]
-{Different layers that control the regulation of microbial metabolic operations\index{sampling_pseudo}}
+{Different layers that control the regulation of microbial metabolic operations from \cite{Kotte2010}\index{sampling_pseudo}}
 \label{fig:mlayers}
 \end{figure}
-Transcriptional, translational, allosteric, and post-translational regulations ensure that a microbe can respond to diverse extracellular cues through global and local circuits \cite{Chubukov2014}. Knowing how a microbe senses input and dials a response is important for metabolic engineers trying to direct microbial resources and reactions to specific pathways. Metabolic engineers typically aim to dial flux of certain pathways or specific reactions.
 
-To understand the effect of sensors on the network, through literature search, a comprehensive a list of discovered sensors  and their potential effects are enumerated. Additionally, through literature search, current desires of the engineering community, as well as using the database RegulonDB \cite{doi:10.1093/nar/gkv1156} which consists of TFs and their targets, a comprehensive list of dials are enumerated. Data from RegulonDB will give insight into what pathways the sensors affect.
+\begin{figure}[h] 
+\centering
+\includegraphics[width=0.6\textwidth]{regulatory_network}
+\caption[Schematic representation of the interconnection among signalling, gene regulation and metabolism]
+{Schematic representation of the interconnection among signalling, gene regulation and metabolism from \cite{C3MB25489E}}
+\label{fig:reg_net}
+\end{figure}
+
+Knowing how a microbe senses input and dials a response is important for metabolic engineers trying to direct microbial resources and reactions to specific pathways. They typically aim to dial flux of certain pathways or specific reactions. 
+
+Microbial cells consist of both external and internal sensors. Flux \textbf{sensors} which measure the rate at which certain metabolic changes like enzymatic reactions takes place, and then adjust, or dial, certain reactions and pathway flux is an example of internal sensor.
+To understand the effect of flux sensors on the network, through literature search, we made a comprehensive list of discovered sensors and their potential effects on metabolic activities of microbes. Additionally, through literature search, current desires of the engineering community, as well as using the database RegulonDB \cite{doi:10.1093/nar/gkv1156} which consists of TFs and their targets, we made a comprehensive list of flux splits i.e \textbf{dial} values. Data from RegulonDB will give insight into what pathways the sensors affect.
 
 The objective of this project is the prove the following hypothesis:
 \textbf{Sensors contain enough information to predict the values of the dials}.\\
-Using the M-model, flux states with various nutrient sources (reflecting what the sensors sense) are generated using Markov Chain Monte Carlo sampling methods. In order to determine the relationship between these flux states, statistical modeling methods with sensor values as input and dials as output will be used. 
+From figure \ref{fig:reg_net}, the only components involved in this process are signals (both internal and external) and metabolites. Unlike other modeling approaches described in chapter \ref{chap:related_work}, this model does not require additional data collected from literature or analysis of transcriptional or genomic data.
+
+Using Markov Chain Monte Carlo sampling methods, we sample the flux states of the Escherichia coli MG1655 strain under varying nutrient sources. We sample from 34 conditions across multiple BiGG models to create a dataset with 340000 datapoints. We then apply statistical modeling techniques like linear regression, decision trees and ensemble learning methods to predict the dial values using sensor values as input. The results from the statistical modeling techniques show that sensors can effectively predict the dial values without the need for additional data like transcriptional or genomic data.
 
 Representing microbial regulation as a state of sensor and dial values is a new paradigm that can aid in metabolic engineering. Based on the predictions of the learning model, follow-up experiments can be designed to engineer desired dial parameters (phenotypes) through optimal perturbations to the sensors or the regulatory network.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Background}
 
@@ -274,11 +298,7 @@ Cells have built-in sensors that can react to certain cues, directly and indirec
 \centering
 \includegraphics[width=0.6\textwidth]{Flux_sensor}
 \caption[Glycolytic flux sensor]
-<<<<<<< HEAD
 {Glycolytic flux sensor from \cite{Kochanowski1130}\index{sampling_pseudo}}
-=======
-{Glycolytic flux sensor\index{sampling_pseudo}}
->>>>>>> refs/remotes/origin/master
 \label{fig:flux}
 \end{figure}
 
@@ -327,11 +347,7 @@ Table \ref{tab:dials} lists all the dials and the respective BiGG IDs. For the p
 
 \vspace{0.25in}
 \begin{table}[!ht]
-<<<<<<< HEAD
 \caption[List of dials and their corresponding BiGG IDs]{List of dials and their BiGG IDs}
-=======
-\caption[List of sensors and their corresponding BiGG IDs]{List of sensors and their BiGG IDs}
->>>>>>> refs/remotes/origin/master
 
 \vspace{-0.25in}
 \begin{center}
@@ -371,11 +387,7 @@ NH4 uptake options & GLUDy / GLUSy, GLUDy / GLNS\\
 \centering
 \includegraphics[width=0.4\textwidth]{dial_1}
 \caption[Pictographic representation of Dial]
-<<<<<<< HEAD
 {Pictographic representation of Dial from \cite{Chubukov2014}\index{sampling_pseudo}}
-=======
-{Pictographic representation of Dial\index{sampling_pseudo}}
->>>>>>> refs/remotes/origin/master
 \label{fig:dial_1}
 \end{figure}
 
@@ -383,40 +395,80 @@ NH4 uptake options & GLUDy / GLUSy, GLUDy / GLNS\\
 \centering
 \includegraphics[width=0.4\textwidth]{dial_2}
 \caption[Pentose-phosphate vs glycolysis dial]
-<<<<<<< HEAD
 {Pentose-phosphate vs glycolysis dial \index{sampling_pseudo}}
-=======
-{Pentose-phosphate vs glycolysis dial\index{sampling_pseudo}}
->>>>>>> refs/remotes/origin/master
 \label{fig:dial_2}
 \end{figure}
 
-\chapter{Related Work}
-\textbf{TODO : fill it up}\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[!tbp]
-  \centering
-  \begin{minipage}[b]{0.4\textwidth}
-    \includegraphics[width=\textwidth]{PROM}
-    \caption[System design PROM modeling approach]{System design of PROM modeling approach}
-    \label{fig:prom}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.4\textwidth}
-    \includegraphics[width=\textwidth]{TRN}
-    \caption[System design of TRN modeling approach]{System design of TRN modeling approach}
-\label{fig:trn}
-  \end{minipage}
+\chapter{Related Work} \label{chap:related_work}
+
+Most of the work in the field of genome-scale analysis is divided into two fractions. One fraction focuses on metabolic networks and the other on transcriptional regulatory networks.
+While a lot of work focuses on these fractions separately, a seamlessly integrated metabolic-regulatory network would enable better predictions of how genetic mutations and transcriptional perturbations are translated into flux responses at the metabolic level. There have been significant successes in this endeavor \cite{Covert2004} and \cite{Herrgård2006}, yet substantial challenges remain. 
+
+The most commonly used genome-scale analysis method today is regulatory flux balance analysis (RFBA) \cite{Covert2004} and \cite{COVERT200173}. This method links the transcriptome of an organism with metabolism and 
+incorporates regulatory constraints into flux balance analysis (FBA).
+Figure \ref{fig:rfba} provides the system design and overview of RFBA.
+\begin{figure}[h] 
+\centering
+\includegraphics[width=0.6\textwidth]{rfba}
+\caption[Regulatory Flux Balance Analysis method of genome-scale analysis]
+{Regulatory Flux Balance Analysis method of genome-scale analysis}
+\label{fig:rfba}
 \end{figure}
 
+In the case of RFBA, the metabolic network is not only restricted by mass, thermodynamic, and energy constraints, but also by the gene regulatory network that controls it.\\
+Steady-state RFBA (SRFBA) \cite{Shlomi2007} and integrated FBA (iFBA) \cite{doi:10.1093/bioinformatics/btn352} are similar methods based on Boolean logic. SR-FBA uses the same genome-scale integrated metabolic regulatory network as RFBA but characterizes its steady-state behavior, whereas iFBA uses differential equations to model a subset of the regulatory network.
+
+Since RFBA model simplifies the relationship between the transcriptome and the metabolome to a binary process, it has several shortcomings associted with it and other boolean logic-based methods. The absence of an automated algorithm to determine the boolean rules for relating the regulator with its target is the biggest shortcoming of RFBA when a large number of species are considered. Although the manual process can be accurate in modeling metabolic regulation, manual reconstruction greatly limits the number of interactions. Finally, this process also requires extensive literature search. 
+
+In order to overcome the drawbacks associated with RFBA, probabilistic regulation of metabolism (PROM) model was introduces in \cite{Chandrasekaran17845}. PROM by automatically quantifying the interactions from high-throughput data, enables direct integration of the transcriptional and metabolic networks for modeling. It overcomes the need for manually writing the Boolean rules which was the major drawback of RFBA. By virtue of automatically quantifying the interactions, PROM greatly increases the capacity to generate genome-scale integrated models. Figures \ref{fig:prom_mech} and \ref{fig:prom_attr}  provides the system design and overview of PROM
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=0.6\textwidth]{prom_mech}
+\caption[Probabilistic Regulation of Metabolism method of genome-scale analysis]
+{Probabilistic Regulation of Metabolism method of genome-scale analysis from \cite{Chandrasekaran17845}}
+\label{fig:prom_mech}
+\end{figure}
+
+PROM is robust to noise in high-throughput data and can be easily integrated with automated algorithms for network inference. The PROM algorithm uses conditional probabilities for modeling transcriptional regulation, similar to the probabilistic Boolean networks of \cite{pmid11847074} and uses FBA \cite{pmid14580578} for modeling metabolic networks. PROM introduces probabilities to represent gene states and gene–transcription factor interactions. 
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=0.6\textwidth]{Prom_appr}
+\caption[Overview of the process used to integrate the metabolic and regulatory network using PROM]
+{Overview of the process used to integrate the metabolic and regulatory network using PROM from \cite{Chandrasekaran17845}}
+\label{fig:prom_attr}
+\end{figure}
+
+A different approach, one that is not associated with either probabilistic or boolean networks, but is dependent on signal networks is the Genetic sensory response units (GENSOR units) \cite{10.3389/fmicb.2017.01466}. GENSOR formalizes the process of detection and processing of environmental information mediated by individual transcription factors (TFs). These units are composed of four components namely a signal, signal transduction, genetic switch, and a response. In order to assemble a GENSOR unit,  experimentally validated data sets from two databases were used for each of the 189 local TFs of Escherichia coli K-12 contained in the RegulonDB database. Ideally, GENSOR units describe the information that flows through different layers of cellular organization to produce an appropriate response. Further analysis of the GENSOR unit set showed that less than a quarter of the TFs regulate genes that belong to the same metabolic flux, but feedback is a common occurrence. A gradient of response complexity can be observed and is partially explained by the regulatory effect of the corresponding TF. 
+
+Beyond the biological insights of GENSORs, \cite{10.3389/fmicb.2017.01466} provides the set of GENSOR units as a standardized framework for small- and large-scale analyses of the interplay between transcriptional regulation and metabolism. 
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=0.6\textwidth]{blk_diag}
+\caption[Block diagram of different modeling approaches]
+{Block diagram of different modeling approaches}
+\label{fig:diff_sys}
+\end{figure}
+
+From figure \ref{fig:diff_sys}, we can see the both RFBA and PROM methods are dependent on data from literature which is hard to curate. Although GENSOR method doesn't require extensive data collection, all three methods require the integeration of metabolic and transcriptional networks. This additional step is not necessary in the \textbf{sensors and dials approach}. The approach presented in this paper requires very little data gathering from literature. The sensors and dials approach uses statistical modeling to mimic the workings of the TRN and genetic layer in figure \ref{fig:diff_sys}.
+
+Other methods based on stochastic models or differential equations \cite{10.1371/journal.pcbi.1000086} and \cite{10.1371/journal.pcbi.1005489} are usually restricted to modeling small systems and have not been extended thus far to the genome scale.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{System Design}
+
 The block diagram of the system is as show in figure \ref{fig:sys}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=0.4\textwidth]{my_model}
-\caption[System design of the sensors and dials modeling approach]
-{System design of the sensors and dials modeling approach\index{sampling_pseudo}}
+\caption[Block diagram of the sensors and dials modeling approach]
+{Block diagram of the sensors and dials modeling approach\index{sampling_pseudo}}
 \label{fig:sys}
 \end{figure}
 
@@ -426,6 +478,7 @@ This approach is different from both PROM and TRN approaches shown in figures \r
 
 The following chapters will detail the dataset used in the modeling task. A number of models with varying accuracy are used to predict the dial values. The workings and the results of each of the models are detailed in chapters \ref{chap:method} and \ref{chap:results}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Dataset}
 
 The dataset consists of metabolic flux values of Escherichia coli str. K-12 substr. MG1655 \cite{Blattner1453} obtained by Monte Carlo Markov chain (MCMC) sampling of BiGG \cite{doi:10.1093/nar/gkv1049} models as seen in table \ref{tab:bigg}. 
@@ -581,6 +634,8 @@ The third technique used to validate the samples is by drawing pathway maps in E
 \subsection{Gelman and Rubin Test}
 The fouth technique used to validate the samples is using the Gelman and Rubin test as explained in \cite{10.1371/journal.pone.0086587} under the Empirical Convergence Diagnostics section. The R value obtained was $1.032$. This indicated that the dataset has achieved empirical convergence. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Methodology}\label{chap:method}
 In order to test the hypothesis about correlation between sensors and dials,
 initial set of line plots of each sensor and dial were drawn. Once a correlation was indeed noticed, statistical modeling was done on the data. A number of statistical modeling techniques like liner regression, tree based models and ensemble learning models were used 
@@ -638,14 +693,12 @@ A seperate model was built for each dials.
 The line plots in figures \ref{fig:binned}, \ref{fig:o2ldhline}, \ref{fig:nadhline} and \ref{fig:o2pgiline}, it can be seen that there exist a liner correlation between each of the sensors and dials. Since a linear correlation exists, the statistical model best suited was liner regression. The results for linear regression are as shown in section \ref{sec:lr}
 
 \subsection{Extreme Gradient Boosted Trees}\label{sec:xgboost}
-<<<<<<< HEAD
-From section \ref{sec:lr}, it is seen that linear regression doesn't perform as well as one would expect. Although there exists a linear relationship between each of the sensors and the dials, a combination of all the sensors leads to non-linearity. Since linear regression tries to fit a straight line for the dataset at hand, it fails to capture this non-linearity. In order to learn this non-linearity, ensemble learning techniques were used.\\
-=======
-From section \ref{sec:lr}, it is seen that linear regression doesn't perform as well as one would expect. Although there exists a linear relationship between each of the sensors and the dials, a combination of all the sensors leads to non-linearity. Since linear regression tries to fit a straight line for the dataset at hand, it fails to capture this non-linearity. In order to learn this non-linearity, ensemble learning techniques were employed.\\
->>>>>>> refs/remotes/origin/master
-Extreme Gradient Boosted Trees \string(XGBoost) \cite{Chen:2016:XST:2939672.2939785} is a class of gradient boosted tree algorithm that employs the tree ensemble model.\\
-The XGBoost library has in-built APIs to retrieve feature importance. Feature importance provides a score that indicates how useful or valuable each feature is in the construction of the boosted decision trees within the model. The more an attribute is used to make key decisions with decision trees, the higher its relative importance.\\
-This importance is calculated explicitly for each attribute in the dataset, allowing attributes to be ranked and compared to each other. Importance is calculated for a single decision tree by the amount that each attribute split point improves the performance measure, weighted by the number of observations the node is responsible for. The performance measure may be the purity (Gini index) used to select the split points or another more specific error function. The feature importances are then averaged across all of the the decision trees within the model.\\
+From section \ref{sec:lr}, it is seen that linear regression doesn't perform as well as one would expect. Although there exists a linear relationship between each of the sensors and the dials, a combination of all the sensors leads to non-linearity. Since linear regression tries to fit a straight line for the dataset at hand, it fails to capture this non-linearity. In order to learn this non-linearity, ensemble learning techniques were used.
+
+Extreme Gradient Boosted Trees \string(XGBoost) \cite{Chen:2016:XST:2939672.2939785} is a class of gradient boosted tree algorithm that employs the tree ensemble model.
+The XGBoost library has in-built APIs to retrieve feature importance. Feature importance provides a score that indicates how useful or valuable each feature is in the construction of the boosted decision trees within the model. The more an attribute is used to make key decisions with decision trees, the higher its relative importance.
+
+Feature importance is calculated explicitly for each attribute in the dataset, allowing attributes to be ranked and compared to each other. Importance is calculated for a single decision tree by the amount that each attribute split point improves the performance measure, weighted by the number of observations the node is responsible for. The performance measure may be the purity (Gini index) used to select the split points or another more specific error function. The feature importances are then averaged across all of the the decision trees within the model.\\
 Feature importance is calculated as follows -
 \begin{verbatim}
 feature_imp = [0] * n_features
@@ -654,24 +707,28 @@ for each internal_node that splits on feature i
     err = compute(error reduction of that node)
     feature_imp[i] = feature_imp[i] + err * len(samples through internal_node)
 \end{verbatim}
-The results from XGBoost and the feature importance plots are as shown in section \ref{sec:xgboostRes}\\
-\textbf{TODO: Add biological significance}
+The results from XGBoost and the feature importance plots are as shown in section \ref{sec:xgboostRes}
 
 \subsection{Decision Tree Regressor}
-From section \ref{sec:xgboostRes}, we can see that although XGBoost performs better than linear regression, it is still not up to the mark. This is clearly visible in figure \ref{fig:PtarAcaldXgb}. We see that a large number of points deviate from the \ang{45} line i.e from the actual value. This is because XGBoost, which employs boosting technique, is based on weak learners \string(high bias, low variance).\\
-In terms of decision trees, weak learners are shallow trees, sometimes even as small as decision stumps (trees with two leaves). Boosting reduces error mainly by reducing bias and also to some extent variance, by aggregating the output from many models. The idea is to add a classifier/regressor at a time, so that the next classifier/regressor is trained to improve the already trained ensemble.\\
-With respect to this dataset, XGBoost overfits to the training data and hence results in lower accuracy. On the other hand, decision trees by means of not employing weak learners, does not overfit the data and hence leads to more accurate result. XGBoost also requires a lot of parameter tuning and either the lack of tuning or extensive tuning can lead to overfitting.\\
-The feature importance calculation is done similarly as in section \ref{sec:xgboost}\\ The results from decision tree regressor and feature importance plots are as shown in section \ref{sec:dtrRes}
+From section \ref{sec:xgboostRes}, we can see that although XGBoost performs better than linear regression, it is still not up to the mark. This is clearly visible in figure \ref{fig:PtarAcaldXgb}. We see that a large number of points deviate from the \ang{45} line i.e from the actual value. This is because XGBoost, which employs boosting technique, is based on weak learners \string(high bias, low variance).
+
+In terms of decision trees, weak learners are shallow trees, sometimes even as small as decision stumps (trees with two leaves). Boosting reduces error mainly by reducing bias and also to some extent variance, by aggregating the output from many models. The idea is to add a classifier/regressor at a time, so that the next classifier/regressor is trained to improve the already trained ensemble.
+
+With respect to this dataset, XGBoost overfits to the training data and hence results in lower accuracy. On the other hand, decision trees by means of not employing weak learners, does not overfit the data and hence leads to more accurate result. XGBoost also requires a lot of parameter tuning and either the lack of tuning or extensive tuning can lead to overfitting.
+
+The results from decision tree regressor and feature importance plots are as shown in section \ref{sec:dtrRes}. The feature importance calculation is done similarly as in section \ref{sec:xgboost}.
 
 
 \subsection{Random Forest Regressor}
 From section \ref{sec:dtrRes}, we can see that random forest regressor performs marginally better than decision trees.
-Random Forest creates a large number of decision trees based on bagging. The basic idea is to resample the data over and over and for each sample train a new classifier/regressor. Different classifiers/regressors overfit the data in a different way, and through voting those differences are averaged out.\\
-The feature importance calculation is done similarly as in section \ref{sec:xgboost}\\
-The results from random forest regressor and feature importance plots are as shown in section \ref{sec:rfrRes}
+
+Random Forest creates a large number of decision trees based on bagging. The basic idea is to resample the data over and over and for each sample train a new classifier/regressor. Different classifiers/regressors overfit the data in a different way, and through voting those differences are averaged out.
+
+The results from random forest regressor and feature importance plots are as shown in section \ref{sec:rfrRes}. The feature importance calculation is done similarly as in section \ref{sec:xgboost}. 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \chapter{Results} \label{chap:results}
 The results of statistical modeling will be reported in terms of mean-squared-error \string(MSE), Pearson-r and Coefficient $R\string^2$ values. The results will be accompanied by scatter plots of actual vs predicted values.
@@ -1136,20 +1193,15 @@ Dial & MSE  & Pearson-r & Coefficient R\string^2 \\
 \end{figure}
 
 %\vspace{-0.25in}
-<<<<<<< HEAD
 \begin{figure}[h!] 
-=======
-\begin{figure}[h] 
->>>>>>> refs/remotes/origin/master
 \centering
 \includegraphics[width=0.5\textwidth]{PTAr_ACALD_rfr_important_features}
 \caption[Random Forest feature importance plot for $(PTAr, ACALD)$ dial]
 {Random Forest feature importance plot for $(PTAr, ACALD)$ dial\index{Feature importance plot for $(PTAr, ACALD)$ dial}}
 \label{fig:PtarAcaldRfrImp}
 \end{figure}
-<<<<<<< HEAD
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Biological Significance of Feature Importance Plots}\label{chap:bioSig}
  This chapter talks about the biological significance of feature importance plots by considering three dials namely Pentose Phosphate vs Glycolysis, Fermentation - Acetyl-CoA and Fermentation - Pyruvate dials.
@@ -1168,31 +1220,23 @@ Figure \ref{fig:PtarCsRfrImp} indicates that PGI sensor is most dominant feature
 
 \section{Fermentation - Pyruvate}\label{sec:pflpdhImp}
 Figure \ref{fig:PflPdhRfrImp} indicates that both oxygen and NADH play a key role in predicting (PFL, PDH) dial. Papers \cite{pmid2655695} and \cite{pmid22343352} indicate that presence or absence of pyruvate dehydrogenase affects the levels of NADH in the organism. Fermentation occurs in anaerobic conditions and hence is an indicator of presence or absence of oxygen. The fact that figure \ref{fig:PflPdhRfrImp} indicates the same proves that the model predicts the dial values accurately.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Conclusion}
 Table \ref{tab:Results} presents a consolidation of results from all the statistical methods used in this project. The average and standard deviation (stdev) values of MSE, Pearson-r and Coefficient $R\string^2$ are calculated for each method and are reported in table \ref{tab:Results}. From the table \ref{tab:Results}, it is evident that through statistical modeling, dial values can be predicted effectively using sensors. From chapter \ref{chap:bioSig}, we can see that the model accurately predicts the biological responses of E.coli in different media just by using sensors. 
 
 Figure \ref{fig:PflPdhRfrImp} indicates that both oxygen and NADH are important features for fermentation - pyruvate dial whereas figure \ref{fig:PflPdhDtrImp} indicates that only oxygen is an important feature. From section \ref{sec:pflpdhImp}, it is evident that random forest regressors perform way better than decision tree regressors in terms of modeling the underlying biology. 
 
-The research presented in this thesis provides a compelling argument that sensors contain enough information to predict the values of dials. Additional data is not required to model the metabolic activities of E.coli MG1566 strain.
+The research presented in this thesis provides a compelling argument that sensors contain enough information to predict the values of dials. Additional data is not required to model the metabolic activities of E.coli MG1655 strain.
 
-=======
-
-\textbf{biological significance of feature importance plots}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Conclusion}
-\textbf{TODO: Ask Zak about biological significance of feature importance plots}\\
-Table \ref{tab:Results} presents a consolidation of results from all the statistical methods employed in this project. The average and standard deviation (stdev) values of MSE, Pearson-r and Coefficient $R\string^2$ are calculated for each method and are reported in table \ref{tab:Results}. From the table \ref{tab:Results}, it is evident that through statistical modeling, dial values can be predicted effectively using sensors. 
->>>>>>> refs/remotes/origin/master
 \vspace{0.25in}
 \begin{table}[!ht]
 \caption[Combined Results from All Methods]{Combined Results from All Methods}
 
 \vspace{-0.25in}
 \begin{center}
-\begin{tabular}{|p{0.85in}|p{0.8in}|p{0.8in}|p{0.8in}|p{0.85in}|p{0.8in}|p{0.8in}|}
+\begin{tabular}{|p{0.6in}|p{0.7in}|p{0.6in}|p{0.65in}|p{0.65in}|p{0.6in}|p{0.6in}|}
 \hline
 Method & Average MSE  & Stdev of MSE & Average Pearson-r & Stdev of Pearson-r & Average Coefficient R\string^2 & Stdev of Coefficient R\string^2\\
 
@@ -1215,19 +1259,16 @@ Random Forest Regressor &  5.6008e-06 & 4.9992e-06 & 0.999968 & 3.0702e-05 & 0.9
 \label{tab:Results}
 \end{table}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Future Work}
-<<<<<<< HEAD
 One of the very first steps in the future is to expand the number of sampling conditions. In case of pentose phosphate vs glycolysis dial, there is a high PGI coupling in the dial. By expanding the number of conditions, this high coupling can be avoided and more interesting results can be uncovered.
 
-The next step would be to add more sensors and dials from the literature.
+The next step would be to add more sensors and dials to our comprehensive list by looking into literature and by talking to researchers at the Systems Biology Research Group.
 
 The more relevant and application oriented next step would be to constrain the metabolic model using the predictive model described in this research. The predictive model would add further constraints to the metabolic model which at times predicts values which are not achievable by a live organism. The combination of pre-existing metabolic modeling and the predictive model as described in this research can be implemented as a single model using genetic algorithms.
 
-=======
-\textbf{TODO: Ask Zak about it}
->>>>>>> refs/remotes/origin/master
 %% END MATTER
 %\printindex %% Uncomment to display the index
 % \nocite{}  %% Put any references that you want to include in the bib 

@@ -203,7 +203,7 @@
 %%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ucsd}[2010/06/01 V3.7 University of California, San Diego, Dissertation Class]
+\ProvidesClass{ucsd}[2010/06/01 V3.7 University of California San Diego, Dissertation Class]
 
 
 %    ****************************************
@@ -361,8 +361,8 @@
 \def\partname{Part}
 %             ~~~~
 % abstract environment:
-\def\abstractshortname{Abstract of the Dissertation} % Used for TOC
-\def\abstractlongname{Abstract of the Dissertation} % Used for Header
+\def\abstractshortname{Abstract of the Thesis} % Used for TOC
+\def\abstractlongname{Abstract of the Thesis} % Used for Header
 %                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % dedication:
 \def\dedicationname{Dedication}
@@ -474,12 +474,12 @@
     \null\vfil
   \begin{center}
     \fmfont
-    UNIVERSITY OF CALIFORNIA, {\expandafter\uppercase\expandafter{\@campus}}\par
+    UNIVERSITY OF CALIFORNIA {\expandafter\uppercase\expandafter{\@campus}}\par
     \bigskip \medskip
     {\bfseries
      {\@title} \par}
     \bigskip \medskip
-    A dissertation submitted in partial satisfaction of the \par
+    A thesis submitted in partial satisfaction of the \par
 	\smallskip
     requirements for the degree \par
 	\smallskip
@@ -548,7 +548,7 @@ All rights reserved.}
 \begin{center}
 \vspace{.25in}
 \vspace{\@approvalspace}
-\makebox[4in][l]{\parbox{4in}{\fmfont The dissertation of {\@author}
+\makebox[4in][l]{\parbox{4in}{\fmfont The thesis of {\@author}
 is approved, and it is acceptable in quality and form for publication
 on microfilm and electronically: }}\\
 \begin{tabular*}{4in}[t]{r@{\extracolsep{\fill}}r}
@@ -593,7 +593,7 @@ on microfilm and electronically: }}\\
 
 & \UCSD@text@chair
 \end{tabular*}\\[\@approvalspace]
-{\fmfont University of California, {\@campus}} \\
+{\fmfont University of California {\@campus}} \\
 \vspace{-.25in}
 \vspace{\@approvalspace}
 {\fmfont \@degreeyear}
@@ -720,7 +720,7 @@ on microfilm and electronically: }}\\
   \fi
   \par
   \vspace{.3in}
-  University of California, {\@campus}, \@degreeyear \par
+  University of California {\@campus}, \@degreeyear \par
   \vspace{.3in}
   {\UCSD@chair}, \UCSD@text@chair
   %Check if there is a co-chair and add accordingly.

@@ -15,7 +15,7 @@
 %
 %   No guaranty is made that this LaTeX class conforms to the official UCSD guidelines.
 %   Make sure that you check the final document against the Formatting Manual.
-%  
+%  https://v2.overleaf.com/5274632273pfsqycnwrkkj
 %   That being said, this class has been routinely used for successful 
 %   publication of doctoral theses.  
 %
@@ -215,6 +215,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{changes} % added by ZK
 
 \begin{document}
 
@@ -247,14 +248,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introduction}
-Cell's survival is dependent on regulation of metabolic operation. Cellular metabolism comprises of 
+To survive, microbial cells depend on precise regulation of metabolic operation. Cellular metabolism is comprised of: 
 \begin{itemize}
-    \item catabolic pathways which produce energy by breaking down molecules
-    \item anabolic reaction routes, which synthesizes the molecules required by the cell by providing the essential building blocks 
+    \item catabolic pathways which produce energy by breaking down molecules, and
+    \item anabolic reaction routes, which synthesizes the molecules required by the cell by providing the essential building blocks. 
 \end{itemize}
 These catabolic pathways and anabolic reaction routes enable homeostasis and growth of the cells \cite{C3MB25489E}
 
-A cell needs to control and adapt its enzyme production and behaviour depending on its requirements. The regulation of microbial metabolic operation is tightly controlled by multiple layers \cite{Kotte2010} as shown in figure \ref{fig:mlayers}. \\
+A cell needs to control and adapt its enzyme production and metabolic activity depending on its requirements for growth. The regulation of microbial metabolic operation is tightly controlled by multiple layers \cite{Kotte2010} as shown in figure \ref{fig:mlayers}.
+
 Transcriptional, translational, allosteric, and post-translational regulations ensure that a microbe can respond to \textbf{diverse extracellular cues} through global and local circuits \cite{Chubukov2014}. This is done via signal transduction mechanisms that are closely related to regulatory mechanisms through signalling cascades. The process of transcription and translation are clearly interconnected as illustrated in figure \ref{fig:reg_net} but have usually been studied separately in distinct sub-disciplines
 of cellular biology.
 
@@ -277,6 +279,7 @@ of cellular biology.
 Knowing how a microbe senses input and dials a response is important for metabolic engineers trying to direct microbial resources and reactions to specific pathways. They typically aim to dial flux of certain pathways or specific reactions. 
 
 Microbial cells consist of both external and internal sensors. Flux \textbf{sensors} which measure the rate at which certain metabolic changes like enzymatic reactions takes place, and then adjust, or dial, certain reactions and pathway flux is an example of internal sensor.
+
 To understand the effect of flux sensors on the network, through literature search, we made a comprehensive list of discovered sensors and their potential effects on metabolic activities of microbes. Additionally, through literature search, current desires of the engineering community, as well as using the database RegulonDB \cite{doi:10.1093/nar/gkv1156} which consists of TFs and their targets, we made a comprehensive list of flux splits i.e \textbf{dial} values. Data from RegulonDB will give insight into what pathways the sensors affect.
 
 The objective of this project is the prove the following hypothesis:
